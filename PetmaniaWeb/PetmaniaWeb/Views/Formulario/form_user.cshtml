@@ -1,0 +1,142 @@
+﻿@using Entities;
+@model Entities.ClienteEntity
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Layout/Shared/_layout.cshtml";
+}
+<div class="container">
+    <div class="style-form-cadastro">
+        <div class="title-logar">
+            Agendar Serviço
+        </div>
+        <form class="form-logar" data-bind="with: Cliente">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input data-bind="value: Nome" type="text" class="form-contro" placeholder="Nome">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input data-bind="value: Cpf" type="text" class="form-control" placeholder="Cpf">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input data-bind="value: Endereco" type="text" class="form-control" placeholder="Endereco">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input data-bind="value: Numero" type="text" class="form-control" placeholder="Número">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input data-bind="value: Bairro" type="text" class="form-control" placeholder="Bairro">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input data-bind="value: Cidade" type="text" class="form-control" placeholder="Cidade">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input data-bind="value: Telefone" type="text" class="form-control" placeholder="Telefone">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input data-bind="value: Celular" type="text" class="form-control" placeholder="Celular">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input data-bind="value: CEP" type="text" class="form-control" placeholder="Cep">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input data-bind="value: Email" type="text" class="form-control" placeholder="Email">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input data-bind="value: Login" type="text" class="form-control" placeholder="Nome do seu pet">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input data-bind="value: Senha" type="date" class="form-control" placeholder="_/_/_">
+                    </div>
+                </div>
+            </div>
+
+            <p>
+                <button type="button" class="btn btn-success" data-bind="click: $root.Save">Agendar</button>
+            </p>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        var ScreenModel = function () {
+            var self = this;
+            var src = @Html.Raw(Json.Encode(Model))
+            self.Cliente = new clienteModel(src)
+
+            //SAVE
+            self.Save = function () {
+                $.ajax({
+                    url: '@Url.Action("SaveCliente")',
+                    type: "POST",
+                    contentType: "application/json; charset = utf-8",
+                    data: ko.toJSON(self.Cliente),
+                    cache: false,
+                    success: function () {
+                        window.location.href = '/Cliente/Index/';
+                    },
+                    complete: function () {
+                        window.location.href = '/Cliente/Index/';
+                    }
+                });
+            }
+
+            //DELETE
+            self.Delete = function () {
+                $.ajax({
+                    url: '@Url.Action("DeleteCliente")',
+                    type: "POST",
+                    data: { id: self.Cliente.IdCliente() },
+                    cache: false,
+                    success: function () {
+                        window.location.href = '/Cliente/Index/';
+                    },
+                    error: function (err) {
+                        alert("Erro")
+                    }
+                });
+            }
+        }
+
+        var clienteModel = function (cliente) {
+            var self = this;
+            self.IdCliente = ko.observable(cliente.IdCliente);
+            self.Nome = ko.observable(cliente.Nome);
+            self.Cpf = ko.observable(cliente.Cpf);
+            self.Endereco = ko.observable(cliente.Endereco);
+            self.Numero = ko.observable(cliente.Numero);
+            self.Bairro = ko.observable(cliente.Bairro);
+            self.Cidade = ko.observable(cliente.Cidade);
+            self.Telefone = ko.observable(cliente.Telefone);
+            self.Celular = ko.observable(cliente.Celular);
+            self.CEP = ko.observable(cliente.CEP);
+            self.Email = ko.observable(cliente.Email);
+            self.Login = ko.observable(cliente.Login);
+            self.Senha = ko.observable(cliente.Senha);
+        }
+    </script>
+}
+

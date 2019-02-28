@@ -1,0 +1,61 @@
+﻿@{
+    Layout = "~/Views/Layout/Shared/_layout.cshtml";
+}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm">
+            <div class="style-logar">
+                <div class="title-logar">
+                    Já sou cadastrado
+                </div>
+                <form class="form-logar">
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-mail">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+                    </div>
+                    <div class="bt-logar"><button type="submit" class="btn btn-info">ENTRAR</button></div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-sm">
+            <div class="style-cadastrar">
+                <div class="title-cadastrar">
+                    Quero me cadastrar
+                </div>
+                <hr />
+                <form class="form-cadastrar">
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nome Completo">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-mail">
+                    </div>
+                        <div class="bt-cadastrar"><button onclick="~/Views/Login/cadastro.cshtml" type="submit" class="btn btn-info">CADASTRAR</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm">
+        </div>
+
+        <div class="style-desc-login">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <img src="~/img/img-precos-mais-baratos.png" />
+                    </div>
+                    <div class="col-sm">
+                        <img src="~/img/img-brindes-para-seu-pet.png" />
+                    </div>
+                    <div class="col-sm">
+                        <img src="~/img/img-agende-uma-data-e-hora.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>    
